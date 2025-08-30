@@ -2,14 +2,12 @@ package com.assignment.sportstracker;
 
 import com.assignment.sportstracker.dto.EventStatusRequest;
 import com.assignment.sportstracker.dto.ExternalApiResponse;
-import com.assignment.sportstracker.model.Event;
 import com.assignment.sportstracker.scheduler.EventScheduler;
 import com.assignment.sportstracker.service.EventService;
 import com.assignment.sportstracker.service.ExternalApiService;
 import com.assignment.sportstracker.service.MessagePublisherService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.kafka.core.KafkaTemplate;
 
@@ -73,7 +71,7 @@ class SportsTrackerServiceTest {
         response.setCurrentScore("2:2");
 
         when(kafkaTemplate.send(anyString(), anyString(), anyString()))
-                .thenThrow(new RuntimeException("Kafka down"));
+                .thenThrow(new RuntimeException("Kafka is down"));
 
         publisherService.publish("sports-events", response);
 

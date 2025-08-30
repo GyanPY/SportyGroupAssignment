@@ -1,9 +1,5 @@
 package com.assignment.sportstracker.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
-@Data
 public class Event {
     private String eventId;
     private boolean live;
